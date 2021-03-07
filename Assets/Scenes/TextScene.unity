@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 1102785579}
   - component: {fileID: 1102785578}
   m_Layer: 5
-  m_Name: TextWindow
+  m_Name: TextBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

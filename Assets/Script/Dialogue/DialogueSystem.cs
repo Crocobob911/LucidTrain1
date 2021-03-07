@@ -9,11 +9,27 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
     public Text txtName;
     public Text txtSentence;
 
+    private GameObject textBar;
+    private GameObject touchArea;
+
     Queue<string> names = new Queue<string>();
     Queue<string> sentences = new Queue<string>();
 
+    private void Start()
+    {
+        textBar = GameObject.Find("TextBar");
+        touchArea = GameObject.Find("TouchArea");
+
+        textBar.SetActive(false);
+        touchArea.SetActive(false);
+    }
+
     public void DialogueBegin(Dialogue info)
     {
+
+        textBar.SetActive(true);
+        touchArea.SetActive(true);
+
         names.Clear();
         sentences.Clear();
 
@@ -25,19 +41,34 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
         {
             sentences.Enqueue(sentence);
         }
+
+        DialogueNext();
+
         Debug.Log("Dialogue Began");
     }
 
     public void DialogueNext()
     {
-        txtName.text = names.Dequeue();
-        txtSentence.text = sentences.Dequeue();
+        if(names.Count == 0)
+        {
+            DialogueEnd();
+        }
+        else
+        {
+            txtName.text = names.Dequeue();
+            txtSentence.text = sentences.Dequeue();
+        }
 
         Debug.Log("Dialogue Touched");
     }
 
     public void DialogueEnd()
     {
+        txtName.text = " ";
+        txtSentence.text = " ";
+
+        textBar.SetActive(false);
+        touchArea.SetActive(false);
         Debug.Log("Dialogue Ended");
     }
 }
