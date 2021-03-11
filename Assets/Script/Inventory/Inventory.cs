@@ -22,23 +22,22 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
 
+    public GameObject invenSlot;
+    public Transform inventoryUI;
+
     public int slotCnt;
 
     private void Start()
     {
-        slotCnt = 6;
+        slotCnt = 0;
     }
 
     public void AddItem(int id) //인벤토리에 아이템 추가
     {
-        if(items.Count < slotCnt)
-        {
-            items.Add(ItemDatabase.instance.itemDB[id]);
-            if(onChangeItem != null)
-            onChangeItem.Invoke();
-            return;
-        }
-            return;
+        slotCnt++;
+        items.Add(ItemDatabase.instance.itemDB[id]);
+        if(onChangeItem != null)
+        onChangeItem.Invoke();
     }
 
     public void RemoveItem(int _index) //인벤토리에서 아이템 삭제

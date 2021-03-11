@@ -10,14 +10,16 @@ public class Item
     public string itemName;
     public Sprite itemImage;
 
-    public bool itemUse()
-    {
-        return false;
-    }
 
     public bool Use()
     {
+        bool isUsed = true;
+        /*
         bool isUsed = false;
+        foreach (ItemEffect eft in efts)
+        {
+            isUsed = eft.ExecuteRole();
+        }*/
 
         return isUsed;
     }
