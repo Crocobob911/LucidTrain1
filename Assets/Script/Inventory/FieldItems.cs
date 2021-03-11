@@ -13,15 +13,4 @@ public class FieldItems : MonoBehaviour
         item.itemImage = _item.itemImage;
         image.sprite = item.itemImage;
     }
-
-    public Item GetItem()
-    {
-        return item;
-    }
-
-    public void FieldDestroyItem()
-    {
-        Destroy(gameObject);
-    }
-
 }

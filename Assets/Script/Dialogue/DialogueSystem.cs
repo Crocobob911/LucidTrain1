@@ -8,7 +8,6 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
 {
     public Text txtName;
     public Text txtSentence;
-    public Inventory inven;
 
     private GameObject textBar;
     private GameObject touchArea;
@@ -26,7 +25,7 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
         touchArea.SetActive(false);
     }
 
-    public void DialogueBegin(Dialogue info)
+    public void DialogueBegin(Dialogue info) //대화창 on 및 첫 문장 출력
     {
 
         textBar.SetActive(true);
@@ -54,7 +53,7 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
         Debug.Log("Dialogue Began");
     }
 
-    public void DialogueNext()
+    public void DialogueNext() //TouchArea 터치하면 다음 대사 출력
     {
         if(names.Count == 0)
         {
@@ -69,32 +68,20 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
         Debug.Log("Dialogue Touched");
     }
 
-    public void DialogueEnd()
+    public void DialogueEnd() //마지막 대사 출력 이후 처리
     {
         txtName.text = " ";
         txtSentence.text = " ";
         
         foreach(var itemid in itemIDs)
         {
-            inven.GetInvenItem(itemid);
+            Inventory.instance.AddItem(itemid);
         }
-
 
         textBar.SetActive(false);
         touchArea.SetActive(false);
         Debug.Log("Dialogue Ended");
     }
-
-    public void GetInvenItem()
-    {
-        foreach (var itemId in itemIDs)
-        {
-            Debug.Log(itemId);
-            inven.AddItem(ItemDatabase.instance.itemDB[itemId]);
-            Debug.Log(ItemDatabase.instance.itemDB[itemId].itemName);
-        }
-    }
-
 }
 
 

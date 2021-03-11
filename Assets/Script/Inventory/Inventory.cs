@@ -29,28 +29,21 @@ public class Inventory : MonoBehaviour
         slotCnt = 6;
     }
 
-    public bool AddItem(Item _item)
+    public void AddItem(int id) //인벤토리에 아이템 추가
     {
         if(items.Count < slotCnt)
         {
-            items.Add(_item);
+            items.Add(ItemDatabase.instance.itemDB[id]);
             if(onChangeItem != null)
             onChangeItem.Invoke();
-            return true;
+            return;
         }
-            return false;
+            return;
     }
 
-    public void RemoveItem(int _index)
+    public void RemoveItem(int _index) //인벤토리에서 아이템 삭제
     {
         items.RemoveAt(_index);
         onChangeItem.Invoke();
-    }
-
-    public void GetInvenItem(int id)
-    {
-            Debug.Log("Get Item / id = " + id);
-            AddItem(ItemDatabase.instance.itemDB[id]);
-            //Debug.Log(ItemDatabase.instance.itemDB[id].itemName);
     }
 }
