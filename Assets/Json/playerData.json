@@ -1,5 +1,5 @@
 {
     "age": 21,
-    "isDead": false,
+    "isDead": true,
     "name": "Jun"
 }

@@ -8,12 +8,14 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
 {
     public Text txtName;
     public Text txtSentence;
+    public Inventory inven;
 
     private GameObject textBar;
     private GameObject touchArea;
 
     Queue<string> names = new Queue<string>();
     Queue<string> sentences = new Queue<string>();
+    List<int> itemIDs = new List<int>(); 
 
     private void Start()
     {
@@ -32,6 +34,7 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
 
         names.Clear();
         sentences.Clear();
+        itemIDs.Clear();
 
         foreach (var name in info.names)
         {
@@ -40,6 +43,10 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
         foreach (var sentence in info.sentences)
         {
             sentences.Enqueue(sentence);
+        }
+        foreach(var num in info.itemID)
+        {
+            itemIDs.Add(num);
         }
 
         DialogueNext();
@@ -66,11 +73,28 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
     {
         txtName.text = " ";
         txtSentence.text = " ";
+        
+        foreach(var itemid in itemIDs)
+        {
+            inven.GetInvenItem(itemid);
+        }
+
 
         textBar.SetActive(false);
         touchArea.SetActive(false);
         Debug.Log("Dialogue Ended");
     }
+
+    public void GetInvenItem()
+    {
+        foreach (var itemId in itemIDs)
+        {
+            Debug.Log(itemId);
+            inven.AddItem(ItemDatabase.instance.itemDB[itemId]);
+            Debug.Log(ItemDatabase.instance.itemDB[itemId].itemName);
+        }
+    }
+
 }
 
 
@@ -79,4 +103,5 @@ public class Dialogue
 {
     public List<string> names;
     public List<string> sentences;
+    public List<int> itemID;
 }
