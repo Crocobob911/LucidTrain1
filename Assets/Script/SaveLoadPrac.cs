@@ -5,7 +5,7 @@ using System.IO;
 
 public class SaveLoadPrac : MonoBehaviour
 {
-    private PlayerData data;
+    public PlayerData data;
 
 
     private void Start()
@@ -29,13 +29,13 @@ public class SaveLoadPrac : MonoBehaviour
             Debug.Log(data.age);
             Debug.Log(data.isDead);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4)) //data 정보 임의 변경
+        /*if (Input.GetKeyDown(KeyCode.Alpha4)) //data 정보 임의 변경
         {
             data.age = 24;
             data.isDead = true;
             data.name = "Jackie";
             Debug.Log("Data changed");
-        }
+        }*/
     }
 
     [ContextMenu("To Json Data")]

@@ -9,10 +9,6 @@ public class DialogueSet : MonoBehaviour // 텍스트 파일들의 경로를 tex
 {
     public DialoguePathManager textData;
 
-    private void Start()
-    {
-        textData = GameObject.Find("DialoguePathManager").GetComponent<DialoguePathManager>();
-    }
 
     public void SetText(int index)
     {
