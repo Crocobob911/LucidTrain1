@@ -8,5 +8,6 @@ public class Canvas : MonoBehaviour
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Screen.SetResolution(1920, 1080, true);
+        Debug.Log("Screen Fixed");
     }
 }
