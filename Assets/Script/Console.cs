@@ -351,6 +351,10 @@ namespace Consolation
 
             logs.RemoveRange(0, amountToRemove);
         }
+        public void OnOffWindow()
+        {
+            isVisible = !isVisible;
+        }
     }
 
     /// <summary>
@@ -386,6 +390,7 @@ namespace Consolation
 
             return message.Length <= maxMessageLength ? message : message.Substring(0, maxMessageLength);
         }
+
     }
 
     /// <summary>

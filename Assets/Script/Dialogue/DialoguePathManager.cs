@@ -5,12 +5,12 @@ using System.IO;
 
 public class DialoguePathManager : MonoBehaviour
 {
-    public List<string> DialaoguePath = new List<string>();
+    public List<string> DialoguePath = new List<string>();
     string assetsPath;
 
     private void Start()
     {
-        DialaoguePath.Clear();
+        DialoguePath.Clear();
         PathFinder();
         Debug.Log(assetsPath);
         PathLoad();
@@ -18,15 +18,19 @@ public class DialoguePathManager : MonoBehaviour
 
     private void PathLoad()
     {
+        DialoguePath.Add("Json/dummyTextData1");
+        DialoguePath.Add("Json/dummyTextData2");
+        /*
         DialaoguePath.Add(Path.Combine(assetsPath, "Json/dummyTextData1.json"));
         DialaoguePath.Add(Path.Combine(assetsPath, "Json/dummyTextData2.json"));
+        */
     }
 
     private void PathFinder()
     {
         if (Application.platform == RuntimePlatform.Android)
         {
-            assetsPath = Application.streamingAssetsPath;
+            assetsPath = Application.persistentDataPath;
         }
         else
         {

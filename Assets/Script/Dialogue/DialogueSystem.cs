@@ -49,13 +49,11 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
         }
 
         DialogueNext();
-
-        Debug.Log("Dialogue Began");
     }
 
     public void DialogueNext() //TouchArea 터치하면 다음 대사 출력
     {
-        if(names.Count == 0)
+        if (names.Count == 0)
         {
             DialogueEnd();
         }
@@ -64,8 +62,6 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
             txtName.text = names.Dequeue();
             txtSentence.text = sentences.Dequeue();
         }
-
-        Debug.Log("Dialogue Touched");
     }
 
     public void DialogueEnd() //마지막 대사 출력 이후 처리
@@ -80,7 +76,6 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
 
         textBar.SetActive(false);
         touchArea.SetActive(false);
-        Debug.Log("Dialogue Ended");
     }
 }
 

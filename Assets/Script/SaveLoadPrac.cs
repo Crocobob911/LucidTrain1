@@ -42,7 +42,7 @@ public class SaveLoadPrac : MonoBehaviour
     void SavePlayerDataToJson() //저장
     {
         string jsonData = JsonUtility.ToJson(data, true);
-        string path = Path.Combine(Application.dataPath, "Json/playerData.json");
+        string path = Path.Combine(Application.dataPath, "Saves/playerData.json");
         File.WriteAllText(path, jsonData);
         Debug.Log("Data Saved");
     }
@@ -50,7 +50,7 @@ public class SaveLoadPrac : MonoBehaviour
     [ContextMenu("From Json Data")]
     void LoadPlayerDataFromJson() //불러오기
     {
-        string path = Path.Combine(Application.dataPath, "Json/playerData.json");
+        string path = Path.Combine(Application.dataPath, "Saves/playerData.json");
         string jsonData = File.ReadAllText(path);
         data = JsonUtility.FromJson<PlayerData>(jsonData);
         Debug.Log("Data Loaded");
