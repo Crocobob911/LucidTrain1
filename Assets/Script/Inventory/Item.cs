@@ -9,11 +9,12 @@ public class Item
 {
     public string itemName;
     public Sprite itemImage;
+    public string itemTooltip;
 
 
     public bool Use()
     {
-        bool isUsed = true;
+        bool isUsed = false;
         /*
         bool isUsed = false;
         foreach (ItemEffect eft in efts)

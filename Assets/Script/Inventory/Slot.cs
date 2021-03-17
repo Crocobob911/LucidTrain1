@@ -26,11 +26,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         if (item== null)
             return;
+        ToolTipBox.instance.ToolTipOn(item,gameObject.transform.position);
 
-        bool isUse = item.Use();
+        /*bool isUse = item.Use();
         if (isUse)
         {
             Inventory.instance.RemoveItem(slotnum);
-        }
+        }*/
     }
 }

@@ -36,7 +36,7 @@ public class InventoryUI : MonoBehaviour
 
     private void SlotNumbering()
     {
-        for(int i=0; i<slots.Length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
             slots[i].slotnum = i;
         }
@@ -44,12 +44,12 @@ public class InventoryUI : MonoBehaviour
 
     void RedrawSlotUI()
     {
-        for(int i=0; i<slots.Length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
             slots[i].gameObject.SetActive(false);
             slots[i].RemoveSlot();
         }
-        for(int i=0; i < Inventory.instance.items.Count; i++)
+        for (int i = 0; i < Inventory.instance.items.Count; i++)
         {
             slots[i].gameObject.SetActive(true);
             slots[i].item = Inventory.instance.items[i];
@@ -61,7 +61,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (!onOff)
         {
-            for(int i = 2; i < 5; i++)
+            for (int i = 2; i < 5; i++)
             {
                 slots[i].gameObject.SetActive(false);
             }
