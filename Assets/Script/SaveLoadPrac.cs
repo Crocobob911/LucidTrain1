@@ -5,7 +5,8 @@ using System.IO;
 
 public class SaveLoadPrac : MonoBehaviour
 {
-    public PlayerData data;
+    private SaveData data;
+    //private System.DateTime dateTime = System.DateTime.Now;
 
 
     private void Start()
@@ -38,6 +39,11 @@ public class SaveLoadPrac : MonoBehaviour
         }*/
     }
 
+    public void PhotoCapture()
+    {
+        ScreenCapture.CaptureScreenshot("Assets/Resources/SavePhoto/ScreenShot" + System.DateTime.Now.ToString("yyyy_MM_dd")+ ".png");
+    }
+
     [ContextMenu("To Json Data")]
     void SavePlayerDataToJson() //저장
     {
@@ -52,14 +58,14 @@ public class SaveLoadPrac : MonoBehaviour
     {
         string path = Path.Combine(Application.dataPath, "Saves/playerData.json");
         string jsonData = File.ReadAllText(path);
-        data = JsonUtility.FromJson<PlayerData>(jsonData);
+        data = JsonUtility.FromJson<SaveData>(jsonData);
         Debug.Log("Data Loaded");
     }
 }
 
 
 [System.Serializable]
-public class PlayerData
+public class SaveData
 {
     public int age;
     public bool isDead;

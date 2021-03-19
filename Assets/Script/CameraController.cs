@@ -8,6 +8,12 @@ public class CameraController : MonoBehaviour
     {
         setupCamera();
     }
+
+    private void Start()
+    {
+        ToTextScene();
+    }
+
     private void setupCamera()
     {
         float targetWidthAspect = 16.0f;
@@ -34,4 +40,15 @@ public class CameraController : MonoBehaviour
             mainCamera.rect.width + (widthadd * 2),
             mainCamera.rect.height + (heightadd * 2));
     }
+
+    public void ToTextScene()
+    {
+        gameObject.transform.position = new Vector3(0, 0, -10);
+    }
+
+    public void ToMenuScene()
+    {
+        gameObject.transform.position = new Vector3(25, 0, -10);
+    }
+
 }
