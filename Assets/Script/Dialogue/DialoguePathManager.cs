@@ -6,6 +6,7 @@ using System.IO;
 public class DialoguePathManager : MonoBehaviour
 {
     public List<string> DialoguePath = new List<string>();
+
     string assetsPath;
 
     private void Start()

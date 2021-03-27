@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb4931813a361148a6651be452ff88e, type: 3}
+  m_Name: ExampleSheet
+  m_EditorClassIdentifier: 
+  templatePath: Plugins/QuickSheet/GDataPlugin/Templates
+  scriptFilePath: Plugins/QuickSheet/Editor/Runtime
+  editorScriptFilePath: Plugins/QuickSheet/Editor
+  sheetName: LucidTrain
+  workSheetName: test
+  columnHeaderList:
+  - type: 3
+    name: key
+    isEnable: 0
+    isArray: 0
+  - type: 1
+    name: name
+    isEnable: 0
+    isArray: 0
+  - type: 1
+    name: sentence
+    isEnable: 0
+    isArray: 0
+  - type: 1
+    name: character_img
+    isEnable: 0
+    isArray: 0
+  - type: 1
+    name: effect_sound
+    isEnable: 0
+    isArray: 0
+  AccessCode: 
