@@ -6,11 +6,12 @@ using System.IO;
 
 public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음으로 넘기는 역할
 {
-    public Text txtName;
-    public Text txtSentence;
 
-    private GameObject textBar;
-    private GameObject touchArea;
+    [SerializeField] private Text txtName;
+    [SerializeField] private Text txtSentence;
+
+    [SerializeField] private GameObject textBar;
+    [SerializeField] private GameObject touchArea;
 
     Queue<string> names = new Queue<string>();
     Queue<string> sentences = new Queue<string>();
@@ -18,9 +19,6 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
 
     private void Start()
     {
-        textBar = GameObject.Find("TextBar");
-        touchArea = GameObject.Find("TouchArea");
-
         textBar.SetActive(false);
         touchArea.SetActive(false);
     }

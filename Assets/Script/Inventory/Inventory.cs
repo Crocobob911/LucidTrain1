@@ -22,9 +22,6 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
 
-    public GameObject invenSlot;
-    public Transform inventoryUI;
-
     public int slotCnt;
 
     private void Start()

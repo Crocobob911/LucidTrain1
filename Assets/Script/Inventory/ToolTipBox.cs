@@ -30,7 +30,7 @@ public class ToolTipBox : MonoBehaviour
 
     public bool ToolTipOn(Item _item, Vector3 _pos)
     {
-        Vector3 pos = new Vector3(_pos.x -3.2f , _pos.y -0.6f, _pos.z);
+        Vector3 pos = new Vector3(_pos.x - 430f, _pos.y - 50f, _pos.z);
 
         gameObject.SetActive(true);
         closeArea.SetActive(true);
