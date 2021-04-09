@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     }
     private void setupCamera()
     {
-        float targetWidthAspect = 16.0f;
+        float targetWidthAspect = 18.0f;
         float targetHeightAspect = 9.0f;
 
         Camera mainCamera = Camera.main;

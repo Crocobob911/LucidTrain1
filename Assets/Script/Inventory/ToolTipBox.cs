@@ -34,7 +34,7 @@ public class ToolTipBox : MonoBehaviour
     public bool ToolTipOn(Item _item, Vector3 _pos)
     {
         gameObject.transform.position = _pos;
-        Vector3 pos = new Vector3(_pos.x - 430f, _pos.y - 50f, _pos.z);
+        Vector3 pos = new Vector3(_pos.x - 4.3f, _pos.y - 1f, _pos.z);
 
         gameObject.SetActive(true);
         closeArea.SetActive(true);
@@ -50,7 +50,7 @@ public class ToolTipBox : MonoBehaviour
 
     public void ToolTipOff()
     {
-        Vector3 pos = new Vector3(transform.position.x + 430f, transform.position.y + 50f, transform.position.z);
+        Vector3 pos = new Vector3(transform.position.x + 4f, transform.position.y + 1f, transform.position.z);
         gameObject.transform.DOMove(pos, 0.2f);
         gameObject.transform.DOScale(new Vector3(0, 0, 0), 0.2f);
         closeArea.SetActive(false);
