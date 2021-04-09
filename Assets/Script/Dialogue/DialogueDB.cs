@@ -20,12 +20,12 @@ public class DialogueDB : MonoBehaviour
     private void GetDialDatabase()
     {
         sheetListLength = dialSheetList.Count;
-        Debug.Log("sheetListLength = " + sheetListLength);
+        //Debug.Log("sheetListLength = " + sheetListLength);
 
         for (int i = 0; i < sheetListLength; i++)
         {
             dialDBLength = dialSheetList[i].dataArray.Length;
-            Debug.Log("dialDBtLength = " + dialDBLength);
+            //Debug.Log("dialDBtLength = " + dialDBLength);
             for (int j = 0; j < dialDBLength; j++)
             {
                 dialDB[i].keys.Add(dialSheetList[i].dataArray[j].Key);
