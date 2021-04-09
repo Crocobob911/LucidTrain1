@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class InventoryUI : MonoBehaviour
 {
-    public GameObject inventoryPanel;
-    bool activeInventory = false;
+    [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private Transform slotHolder;
 
-    public Slot[] slots;
-    public Transform slotHolder;
+    private Slot[] slots;
+    private bool activeInventory = false;
+
 
     private void Start()
     {
@@ -17,7 +19,8 @@ public class InventoryUI : MonoBehaviour
         Inventory.instance.onChangeItem += RedrawSlotUI;
         SlotNumbering();
         RedrawSlotUI();
-        inventoryPanel.SetActive(false);
+        inventoryPanel.gameObject.transform.DOScaleY(0, 0.02f);
+        //inventoryPanel.SetActive(false);
     }
 
     private void Update()
@@ -30,8 +33,21 @@ public class InventoryUI : MonoBehaviour
 
     public void InvenOnOff()
     {
+        //Debug.Log("Inven Button Pushed");
+        if (activeInventory)
+        {
+            inventoryPanel.gameObject.transform.DOScaleY(0, 0.3f);
+        }
+        else
+        {
+            inventoryPanel.gameObject.transform.DOScaleY(1, 0.3f);
+        }
+        activeInventory = !activeInventory;
+
+        /*
         activeInventory = !activeInventory;
         inventoryPanel.SetActive(activeInventory);
+        */
     }
 
     private void SlotNumbering()
