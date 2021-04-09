@@ -10,6 +10,8 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
     [SerializeField] private Text txtName;
     [SerializeField] private Text txtSentence;
 
+    //[SerializeField] private GameObject nameText;
+    //[SerializeField] private GameObject sentenceText;
     [SerializeField] private GameObject textBar;
     [SerializeField] private GameObject touchArea;
 
@@ -23,7 +25,7 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
         touchArea.SetActive(false);
     }
 
-    public void DialogueBegin(Dialogue info) //대화창 on 및 첫 문장 출력
+    public void DialogueBegin(DialogueForm info) //대화창 on 및 첫 문장 출력
     {
 
         textBar.SetActive(true);
@@ -41,7 +43,7 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
         {
             sentences.Enqueue(sentence);
         }
-        foreach(var num in info.itemID)
+        foreach(var num in info.clueIDs)
         {
             itemIDs.Add(num);
         }
@@ -79,9 +81,11 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
 
 
 [System.Serializable]
-public class Dialogue
+public class DialogueForm
 {
+    public List<int> keys;
     public List<string> names;
     public List<string> sentences;
-    public List<int> itemID;
+
+    public List<int> clueIDs;
 }
