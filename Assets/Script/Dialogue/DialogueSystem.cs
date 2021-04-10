@@ -7,8 +7,8 @@ using System.IO;
 public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음으로 넘기는 역할
 {
 
-    [SerializeField] private Text txtName;
-    [SerializeField] private Text txtSentence;
+    public Text txtName;
+    public Text txtSentence;
 
     //[SerializeField] private GameObject nameText;
     //[SerializeField] private GameObject sentenceText;

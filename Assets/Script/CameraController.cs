@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public int frameCount= 60;
+    [SerializeField] private int frameCount= 60;
 
     private void Awake()
     {
         setupCamera();
         setupFrame();
     }
+
+    private void Start()
+    {
+        MoveCam(1);
+    }
     private void setupCamera()
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         float targetWidthAspect = 18f;
         float targetHeightAspect = 9f;
 
@@ -46,5 +53,33 @@ public class CameraController : MonoBehaviour
         Application.targetFrameRate = frameCount;
 
         Debug.Log("Frame Fixed : " + frameCount);
+    }
+
+    public void MoveCam(int index)
+    {
+        /* 
+            1 = 텍스트 화면
+            2 = 메뉴 화면
+            3 = 환경설정
+        */
+
+        switch (index)
+        {
+            case 1: //텍스트 화면
+                gameObject.transform.position = new Vector3(385, 192, -10);
+                break;
+
+            case 2: //메뉴 화면
+                gameObject.transform.position = new Vector3(1380, 192, -10);
+                break;
+
+            case 3: //환경설정
+                gameObject.transform.position = new Vector3(2375, 192, -10);
+                break;
+
+            default:
+                break;
+        }
+
     }
 }
