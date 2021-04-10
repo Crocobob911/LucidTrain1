@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private int frameCount= 60;
-
     private void Awake()
     {
         setupCamera();
-        setupFrame();
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+        {
+        }
     }
 
     private void Start()
@@ -45,14 +49,6 @@ public class CameraController : MonoBehaviour
             mainCamera.rect.height + (heightadd * 2));
 
         Debug.Log("Screen Fixed : " + targetWidthAspect + " : " + targetHeightAspect);
-    }
-
-    private void setupFrame()
-    {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = frameCount;
-
-        Debug.Log("Frame Fixed : " + frameCount);
     }
 
     public void MoveCam(int index)
