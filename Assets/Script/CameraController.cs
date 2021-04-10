@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public int frameCount= 60;
+
     private void Awake()
     {
         setupCamera();
+        setupFrame();
     }
     private void setupCamera()
     {
-        float targetWidthAspect = 18.0f;
-        float targetHeightAspect = 9.0f;
+        float targetWidthAspect = 18f;
+        float targetHeightAspect = 9f;
 
         Camera mainCamera = Camera.main;
 
@@ -33,5 +36,15 @@ public class CameraController : MonoBehaviour
             mainCamera.rect.y + Mathf.Abs(heightadd),
             mainCamera.rect.width + (widthadd * 2),
             mainCamera.rect.height + (heightadd * 2));
+
+        Debug.Log("Screen Fixed : " + targetWidthAspect + " : " + targetHeightAspect);
+    }
+
+    private void setupFrame()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = frameCount;
+
+        Debug.Log("Frame Fixed : " + frameCount);
     }
 }

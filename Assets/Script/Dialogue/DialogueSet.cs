@@ -23,6 +23,7 @@ public class DialogueSet : MonoBehaviour
     {
         dialSystem.DialogueBegin(dialDB.dialDB[index]);
 
+        Debug.Log("Dialogue set - dial " + index);
 
         /*
         textAsset = Resources.Load(pathManager.DialoguePath[index]) as TextAsset;

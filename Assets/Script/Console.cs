@@ -60,12 +60,12 @@ namespace Consolation
         /// <summary>
         /// Font size to display log entries with.
         /// </summary>
-        public int logFontSize = 60;
+        public int logFontSize = 15;
 
         /// <summary>
         /// Amount to scale UI by.
         /// </summary>
-        public float scaleFactor = 1f;
+        public float scaleFactor = 4f;
 
         #endregion
 
@@ -74,6 +74,7 @@ namespace Consolation
         static readonly GUIContent collapseLabel = new GUIContent("Collapse", "Hide repeated messages.");
         const int margin = 20;
         const string windowTitle = "Console";
+
 
         static readonly Dictionary<LogType, Color> logTypeColors = new Dictionary<LogType, Color>
         {

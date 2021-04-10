@@ -5,6 +5,8 @@ using System.IO;
 
 public class DialoguePathManager : MonoBehaviour
 {
+    // *******************안 쓰는 파일*********************
+    
     public List<string> DialoguePath = new List<string>();
     string assetsPath;
 

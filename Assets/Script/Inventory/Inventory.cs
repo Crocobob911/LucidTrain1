@@ -35,11 +35,15 @@ public class Inventory : MonoBehaviour
         items.Add(ItemDatabase.instance.itemDB[id]);
         if(onChangeItem != null)
         onChangeItem.Invoke();
+
+        Debug.Log("Get Item - ItemID : " + id);
     }
 
-    public void RemoveItem(int _index) //인벤토리에서 아이템 삭제
+    public void RemoveItem(int id) //인벤토리에서 아이템 삭제
     {
-        items.RemoveAt(_index);
+        items.RemoveAt(id);
         onChangeItem.Invoke();
+
+        Debug.Log("Lose Item - ItemID : " + id);
     }
 }
