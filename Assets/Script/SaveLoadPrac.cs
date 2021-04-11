@@ -7,14 +7,16 @@ public class SaveLoadPrac : MonoBehaviour
 {
     public PlayerData data;
 
+    private string assetPath;
 
-    private void Start()
-    {
-        LoadPlayerDataFromJson();
+    private void Awake()
+    { 
+        PathFinder();
     }
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha1)) //data 를 저장 파일에 쓰기
         {
             SavePlayerDataToJson();
@@ -29,33 +31,68 @@ public class SaveLoadPrac : MonoBehaviour
             Debug.Log(data.age);
             Debug.Log(data.isDead);
         }
-        /*if (Input.GetKeyDown(KeyCode.Alpha4)) //data 정보 임의 변경
+        if (Input.GetKeyDown(KeyCode.Alpha4)) //data 정보 임의 변경
         {
             data.age = 24;
             data.isDead = true;
             data.name = "Jackie";
             Debug.Log("Data changed");
-        }*/
+        }
+        */
     }
 
-    [ContextMenu("To Json Data")]
-    void SavePlayerDataToJson() //저장
+    public void SavePlayerDataToJson() //저장
     {
+
+        //data.invenData = Inventory.instance.items;
         string jsonData = JsonUtility.ToJson(data, true);
-        string path = Path.Combine(Application.dataPath, "Saves/playerData.json");
-        File.WriteAllText(path, jsonData);
+        File.WriteAllText(assetPath + "/Saves/playerData.json", jsonData);
+
         Debug.Log("Data Saved");
     }
 
-    [ContextMenu("From Json Data")]
-    void LoadPlayerDataFromJson() //불러오기
+    public void LoadPlayerDataFromJson() //불러오기
     {
-        string path = Path.Combine(Application.dataPath, "Saves/playerData.json");
-        string jsonData = File.ReadAllText(path);
+        string jsonData = File.ReadAllText(assetPath + "/Saves/playerData.json");
         data = JsonUtility.FromJson<PlayerData>(jsonData);
         Debug.Log("Data Loaded");
+        Debug.Log(JsonUtility.FromJson<PlayerData>(jsonData).age);
+        Debug.Log(JsonUtility.FromJson<PlayerData>(jsonData).isDead);
+        Debug.Log(JsonUtility.FromJson<PlayerData>(jsonData).name);
+    }
+
+    public void saveloadtestone()
+    {
+        data.age = 24;
+        data.isDead = true;
+        data.name = "Jackie";
+        Debug.Log("Data changed");
+    }
+    public void saveloadtesttwo()
+    {
+        data.age = 16;
+        data.isDead = false;
+        data.name = "Sissela";
+        Debug.Log("Data changed");
+    }
+
+    private void PathFinder()
+    {
+        if(Application.platform == RuntimePlatform.Android)
+        {
+            assetPath = Application.persistentDataPath;
+            if (!Directory.Exists(Application.persistentDataPath + "/Saves"))
+                Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
+        }
+        else
+        {
+            assetPath = Application.dataPath +"/Resources";
+        }
+
+        Debug.Log(assetPath);
     }
 }
+
 
 
 [System.Serializable]
@@ -64,4 +101,5 @@ public class PlayerData
     public int age;
     public bool isDead;
     public string name;
+    //public List<Item> invenData = new List<Item>();
 }
