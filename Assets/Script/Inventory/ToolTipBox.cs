@@ -24,36 +24,37 @@ public class ToolTipBox : MonoBehaviour
     [SerializeField] private Text tooltipName;
     [SerializeField] private Text tooltipExplain;
 
-    private Vector3 pos;
+    private Vector3 movePos;
 
     private void Start()
     {
-        ToolTipOff();
+        OffToolTip();
     }
 
-    public void ToolTipOn(Item _item, Vector3 _pos)
+    public void OnToolTip(Item _item, Vector3 _pos)
     {
         gameObject.transform.position = _pos;
-        pos = new Vector3(_pos.x -160f, _pos.y - 30f, _pos.z);
+        movePos = new Vector3(_pos.x -160f, _pos.y - 30f, _pos.z);
 
         gameObject.SetActive(true);
         TouchArea.instance.gameObject.SetActive(true);
-        TouchArea.instance.delTouched += ToolTipOff;
+        TouchArea.instance.delTouched += OffToolTip;
 
-        gameObject.transform.DOMove(pos, 0.2f);
+        gameObject.transform.DOMove(movePos, 0.2f);
         gameObject.transform.DOScale(new Vector3(1,1,0), 0.2f);
-        tooltipName.text = _item.itemName;
-        tooltipExplain.text = _item.itemTooltip;
+        tooltipName.text = _item.name;
+        tooltipExplain.text = _item.tooltip;
 
 
         //gameObject.transform.position= pos;
     }
 
-    public void ToolTipOff()
+    public void OffToolTip()
     {
-        pos = new Vector3(transform.position.x + 160f, transform.position.y + 30f, transform.position.z);
-        gameObject.transform.DOMove(pos, 0.2f);
+        movePos = new Vector3(transform.position.x + 160f, transform.position.y + 30f, transform.position.z);
+        gameObject.transform.DOMove(movePos, 0.2f);
         gameObject.transform.DOScale(new Vector3(0, 0, 0), 0.2f);
+
         TouchArea.instance.InitTouchArea();
     }
 }

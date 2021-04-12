@@ -21,68 +21,69 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
 
     public Text txtName;
     public Text txtSentence;
+    [SerializeField] private GameObject textBar;
 
     public bool isTexting = false;
 
-    //[SerializeField] private GameObject nameText;
-    //[SerializeField] private GameObject sentenceText;
-    [SerializeField] private GameObject textBar;
-
-    Queue<string> names = new Queue<string>();
-    Queue<string> sentences = new Queue<string>();
-    List<int> itemIDs = new List<int>(); 
+    private DialogueForm dialData;
+    private Queue<string> nameQueue = new Queue<string>();
+    private Queue<string> sentenceQueue = new Queue<string>();
+    private List<int> itemIDQueue = new List<int>(); 
 
     private void Start()
     {
         textBar.SetActive(false);
     }
 
-    public void DialogueBegin(DialogueForm info) //대화창 on 및 첫 문장 출력
+
+    public void BeginDialogue(int index) //대화창 on 및 첫 문장 출력
     {
+        dialData = DialogueDB.instance.dialDB[index];
+
         isTexting = true;
         textBar.SetActive(true);
 
-        names.Clear();
-        sentences.Clear();
-        itemIDs.Clear();
+        nameQueue.Clear();
+        sentenceQueue.Clear();
+        itemIDQueue.Clear();
 
-        foreach (var name in info.names)
+        foreach (var name in dialData.names)
         {
-            names.Enqueue(name);
+            nameQueue.Enqueue(name);
         }
-        foreach (var sentence in info.sentences)
+        foreach (var sentence in dialData.sentences)
         {
-            sentences.Enqueue(sentence);
+            sentenceQueue.Enqueue(sentence);
         }
-        foreach(var num in info.clueIDs)
+        foreach(var num in dialData.clueIDs)
         {
-            itemIDs.Add(num);
+            itemIDQueue.Add(num);
         }
 
         TouchArea.instance.gameObject.SetActive(true);
-        TouchArea.instance.delTouched += DialogueNext;
-        DialogueNext();
+        TouchArea.instance.delTouched += NextDialogue;
+        NextDialogue();
     }
 
-    public void DialogueNext() //TouchArea 터치하면 다음 대사 출력
+    public void NextDialogue() //TouchArea 터치하면 다음 대사 출력
     {
-        if (names.Count == 0)
+        if (nameQueue.Count == 0)
         {
-            DialogueEnd();
+            EndDialogue();
         }
         else
         {
-            txtName.text = names.Dequeue();
-            txtSentence.text = sentences.Dequeue();
+            txtName.text = nameQueue.Dequeue();
+            txtSentence.text = sentenceQueue.Dequeue();
         }
     }
 
-    public void DialogueEnd() //마지막 대사 출력 이후 처리
+    private void EndDialogue() //마지막 대사 출력 이후 처리
     {
         txtName.text = " ";
         txtSentence.text = " ";
         
-        foreach(var itemid in itemIDs)
+        foreach(var itemid in itemIDQueue)
         {
             Inventory.instance.AddItem(itemid);
         }

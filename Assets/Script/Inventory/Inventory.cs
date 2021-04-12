@@ -22,16 +22,16 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
 
-    public int slotCnt;
+    public int slotLength;
 
     private void Start()
     {
-        slotCnt = 0;
+        slotLength = 0;
     }
 
     public void AddItem(int id) //인벤토리에 아이템 추가
     {
-        slotCnt++;
+        slotLength++;
         items.Add(ItemDatabase.instance.itemDB[id]);
         if(onChangeItem != null)
         onChangeItem.Invoke();

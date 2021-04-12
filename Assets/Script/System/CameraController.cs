@@ -9,13 +9,6 @@ public class CameraController : MonoBehaviour
         setupCamera();
     }
 
-    private void OnApplicationFocus(bool focus)
-    {
-        if (focus)
-        {
-        }
-    }
-
     private void Start()
     {
         MoveCam(1);

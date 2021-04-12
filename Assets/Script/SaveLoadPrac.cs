@@ -10,8 +10,8 @@ public class SaveLoadPrac : MonoBehaviour
     private string assetPath;
 
     private void Awake()
-    { 
-        PathFinder();
+    {
+        FindAssetPath();
     }
 
     private void Update()
@@ -41,9 +41,8 @@ public class SaveLoadPrac : MonoBehaviour
         */
     }
 
-    public void SavePlayerDataToJson() //저장
+    public void SavePlayerData() //저장
     {
-
         //data.invenData = Inventory.instance.items;
         string jsonData = JsonUtility.ToJson(data, true);
         File.WriteAllText(assetPath + "/Saves/playerData.json", jsonData);
@@ -51,7 +50,7 @@ public class SaveLoadPrac : MonoBehaviour
         Debug.Log("Data Saved");
     }
 
-    public void LoadPlayerDataFromJson() //불러오기
+    public void LoadPlayerData() //불러오기
     {
         string jsonData = File.ReadAllText(assetPath + "/Saves/playerData.json");
         data = JsonUtility.FromJson<PlayerData>(jsonData);
@@ -76,7 +75,7 @@ public class SaveLoadPrac : MonoBehaviour
         Debug.Log("Data changed");
     }
 
-    private void PathFinder()
+    private void FindAssetPath()
     {
         if(Application.platform == RuntimePlatform.Android)
         {

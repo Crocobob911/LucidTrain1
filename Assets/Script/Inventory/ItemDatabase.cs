@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class ItemDatabase : MonoBehaviour
 {
+    #region Singleton
     public static ItemDatabase instance;
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
     }
+    #endregion
 
     public List<Item> itemDB = new List<Item>();
 
@@ -17,9 +24,9 @@ public class ItemDatabase : MonoBehaviour
 [System.Serializable]
 public class Item
 {
-    public string itemName;
-    public Sprite itemImage;
-    public string itemTooltip;
+    public string name;
+    public Sprite image;
+    public string tooltip;
 
 
     public bool Use()

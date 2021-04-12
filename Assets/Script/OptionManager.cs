@@ -6,20 +6,20 @@ using UnityEngine.UI;
 public class OptionManager : MonoBehaviour
 {
     [SerializeField] private AudioSource musicSource;
-    [SerializeField] private Scrollbar soundScroll;
+    [SerializeField] private Scrollbar volumeBar;
 
     [SerializeField] private DialogueSystem dialSystem;
-    [SerializeField] private Scrollbar fontSizeScroll;
+    [SerializeField] private Scrollbar fontSizeBar;
     private int fontSize;
 
     public void SetMusicVolume()
     {
-        musicSource.volume = soundScroll.value;
+        musicSource.volume = volumeBar.value;
     }
 
     public void SetFontSize()
     {
-        fontSize = (int)(45 + 30 * fontSizeScroll.value);
+        fontSize = (int)(45 + 30 * fontSizeBar.value);
         dialSystem.txtName.fontSize = fontSize;        
         dialSystem.txtSentence.fontSize = fontSize;
     }
