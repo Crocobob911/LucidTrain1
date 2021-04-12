@@ -6,14 +6,27 @@ using System.IO;
 
 public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음으로 넘기는 역할
 {
+    #region Singleton
+    public static DialogueSystem instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+    }
+    #endregion
 
     public Text txtName;
     public Text txtSentence;
 
+    public bool isTexting = false;
+
     //[SerializeField] private GameObject nameText;
     //[SerializeField] private GameObject sentenceText;
     [SerializeField] private GameObject textBar;
-    [SerializeField] private GameObject touchArea;
 
     Queue<string> names = new Queue<string>();
     Queue<string> sentences = new Queue<string>();
@@ -22,14 +35,12 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
     private void Start()
     {
         textBar.SetActive(false);
-        touchArea.SetActive(false);
     }
 
     public void DialogueBegin(DialogueForm info) //대화창 on 및 첫 문장 출력
     {
-
+        isTexting = true;
         textBar.SetActive(true);
-        touchArea.SetActive(true);
 
         names.Clear();
         sentences.Clear();
@@ -48,6 +59,8 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
             itemIDs.Add(num);
         }
 
+        TouchArea.instance.gameObject.SetActive(true);
+        TouchArea.instance.delTouched += DialogueNext;
         DialogueNext();
     }
 
@@ -75,7 +88,8 @@ public class DialogueSystem : MonoBehaviour // 대화창 대사를 받아 다음
         }
 
         textBar.SetActive(false);
-        touchArea.SetActive(false);
+        TouchArea.instance.InitTouchArea();
+        isTexting = false;
     }
 }
 

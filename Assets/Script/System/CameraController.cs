@@ -48,7 +48,7 @@ public class CameraController : MonoBehaviour
             mainCamera.rect.width + (widthadd * 2),
             mainCamera.rect.height + (heightadd * 2));
 
-        Debug.Log("Screen Fixed : " + targetWidthAspect + " : " + targetHeightAspect);
+        //Debug.Log("Screen Fixed : " + targetWidthAspect + " : " + targetHeightAspect);
     }
 
     public void MoveCam(int index)

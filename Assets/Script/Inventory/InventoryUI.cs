@@ -20,7 +20,7 @@ public class InventoryUI : MonoBehaviour
         SlotNumbering();
         RedrawSlotUI();
         //inventoryPanel.gameObject.GetComponent<RectTransform>().DOLocalMoveY(0f, 0.02f);
-        inventoryPanel.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(180f, 0f), 0.02f);
+        inventoryPanel.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(180f, -0.1f), 0.02f);
     }
 
     private void Update()
@@ -37,7 +37,7 @@ public class InventoryUI : MonoBehaviour
         if (activeInventory)
         {
             //inventoryPanel.gameObject.GetComponent<RectTransform>().DOLocalMoveY(0f, 0.3f);
-            inventoryPanel.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(180f, 0f), 0.3f);
+            inventoryPanel.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(180f, -0.1f), 0.3f);
         }
         else
         {

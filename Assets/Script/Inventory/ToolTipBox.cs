@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using DG.Tweening;
 
 public class ToolTipBox : MonoBehaviour
+//다음 텍스트로 넘어갈 때,
+//툴팁창을 닫을 때, 활용할 모든 UI 앞에 있는 빈 화면
 {
     #region Singleton
     public static ToolTipBox instance;
@@ -22,7 +24,6 @@ public class ToolTipBox : MonoBehaviour
     [SerializeField] private Text tooltipName;
     [SerializeField] private Text tooltipExplain;
 
-    [SerializeField] private GameObject closeArea;
     private Vector3 pos;
 
     private void Start()
@@ -30,13 +31,15 @@ public class ToolTipBox : MonoBehaviour
         ToolTipOff();
     }
 
-    public bool ToolTipOn(Item _item, Vector3 _pos)
+    public void ToolTipOn(Item _item, Vector3 _pos)
     {
         gameObject.transform.position = _pos;
         pos = new Vector3(_pos.x -160f, _pos.y - 30f, _pos.z);
 
         gameObject.SetActive(true);
-        closeArea.SetActive(true);
+        TouchArea.instance.gameObject.SetActive(true);
+        TouchArea.instance.delTouched += ToolTipOff;
+
         gameObject.transform.DOMove(pos, 0.2f);
         gameObject.transform.DOScale(new Vector3(1,1,0), 0.2f);
         tooltipName.text = _item.itemName;
@@ -44,7 +47,6 @@ public class ToolTipBox : MonoBehaviour
 
 
         //gameObject.transform.position= pos;
-        return true;
     }
 
     public void ToolTipOff()
@@ -52,6 +54,6 @@ public class ToolTipBox : MonoBehaviour
         pos = new Vector3(transform.position.x + 160f, transform.position.y + 30f, transform.position.z);
         gameObject.transform.DOMove(pos, 0.2f);
         gameObject.transform.DOScale(new Vector3(0, 0, 0), 0.2f);
-        closeArea.SetActive(false);
+        TouchArea.instance.InitTouchArea();
     }
 }

@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class DialogueDB : MonoBehaviour
 {
+    #region SingletonAndAwake
+    public static DialogueDB instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+
+        GetDialDatabase();
+
+    }
+    #endregion
 
     [SerializeField] private List<Dialogue> dialSheetList;
     private int sheetListLength;
 
     public List<DialogueForm> dialDB;
     private int dialDBLength; 
-
-    private void Awake()
-    {
-        GetDialDatabase();
-    }
 
 
     private void GetDialDatabase()

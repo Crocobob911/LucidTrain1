@@ -16,7 +16,7 @@ public class SystemManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = frameCount;
 
-        Debug.Log("Frame Fixed : " + frameCount);
+        //Debug.Log("Frame Fixed : " + frameCount);
     }
 
 }
