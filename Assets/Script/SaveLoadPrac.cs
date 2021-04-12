@@ -83,13 +83,14 @@ public class SaveLoadPrac : MonoBehaviour
             assetPath = Application.persistentDataPath;
             if (!Directory.Exists(Application.persistentDataPath + "/Saves"))
                 Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
+
+            Debug.Log("Platform : Android");
         }
         else
         {
             assetPath = Application.dataPath +"/Resources";
+            Debug.Log("Platform : Unity Editor");
         }
-
-        Debug.Log(assetPath);
     }
 }
 

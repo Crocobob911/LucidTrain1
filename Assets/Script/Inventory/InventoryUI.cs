@@ -19,8 +19,8 @@ public class InventoryUI : MonoBehaviour
         Inventory.instance.onChangeItem += RedrawSlotUI;
         SlotNumbering();
         RedrawSlotUI();
-        inventoryPanel.gameObject.transform.DOScaleY(0, 0.02f);
-        //inventoryPanel.SetActive(false);
+        //inventoryPanel.gameObject.GetComponent<RectTransform>().DOLocalMoveY(0f, 0.02f);
+        inventoryPanel.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(180f, 0f), 0.02f);
     }
 
     private void Update()
@@ -36,11 +36,13 @@ public class InventoryUI : MonoBehaviour
         //Debug.Log("Inven Button Pushed");
         if (activeInventory)
         {
-            inventoryPanel.gameObject.transform.DOScaleY(0, 0.3f);
+            //inventoryPanel.gameObject.GetComponent<RectTransform>().DOLocalMoveY(0f, 0.3f);
+            inventoryPanel.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(180f, 0f), 0.3f);
         }
         else
         {
-            inventoryPanel.gameObject.transform.DOScaleY(1, 0.3f);
+            //inventoryPanel.gameObject.GetComponent<RectTransform>().DOLocalMoveY(-933f, 0.3f);
+            inventoryPanel.gameObject.GetComponent<RectTransform>().DOSizeDelta(new Vector2(180f, 933f), 0.3f);
         }
         activeInventory = !activeInventory;
 

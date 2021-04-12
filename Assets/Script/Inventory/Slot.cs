@@ -24,11 +24,14 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        /*
         if (item== null)
             return;
         ToolTipBox.instance.ToolTipOn(item,gameObject.transform.position);
-
-        /*bool isUse = item.Use();
+        */
+        Inventory.instance.RemoveItem(slotnum);
+        /*
+        bool isUse = item.Use();
         if (isUse)
         {
             Inventory.instance.RemoveItem(slotnum);
