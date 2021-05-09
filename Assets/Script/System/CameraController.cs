@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private void Awake()
-    {
-        setupCamera();
-    }
-
-    private void Start()
-    {
-        MoveCam(1);
-    }
+    /*
     private void setupCamera()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -43,32 +35,5 @@ public class CameraController : MonoBehaviour
 
         //Debug.Log("Screen Fixed : " + targetWidthAspect + " : " + targetHeightAspect);
     }
-
-    public void MoveCam(int index)
-    {
-        /* 
-            1 = 텍스트 화면
-            2 = 메뉴 화면
-            3 = 환경설정
-        */
-
-        switch (index)
-        {
-            case 1: //텍스트 화면
-                gameObject.transform.position = new Vector3(385, 192, -10);
-                break;
-
-            case 2: //메뉴 화면
-                gameObject.transform.position = new Vector3(1380, 192, -10);
-                break;
-
-            case 3: //환경설정
-                gameObject.transform.position = new Vector3(2375, 192, -10);
-                break;
-
-            default:
-                break;
-        }
-
-    }
+    */
 }
